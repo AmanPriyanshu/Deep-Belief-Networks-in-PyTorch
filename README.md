@@ -15,6 +15,32 @@ In an RBM, we have a symmetric bipartite graph where no two units within the sam
 
 The above project allows one to train an RBM and a DBN in PyTorch on both CPU and GPU. Finally let us take a look at some of the reconstructed images.
 
+### Results - Restricted Boltzmann Machine:
+
+Without Pre-Training:
+
+
+epochs | test loss | train loss | test acc | train acc
+---|---|---|---|---
+1.0 | 1.793358325958252 | 1.7901512384414673 | 0.6681372549019607 | 0.672005772005772
+2.0 | 1.703145980834961 | 1.6950132846832275 | 0.7593837535014005 | 0.7689033189033189
+3.0 | 1.614591121673584 | 1.60787832736969 | 0.8499299719887955 | 0.8563492063492063
+4.0 | 1.548156976699829 | 1.539191484451294 | 0.9173669467787114 | 0.9269119769119769
+5.0 | 1.5276743173599243 | 1.5182831287384033 | 0.9369047619047619 | 0.9461760461760462
+
+
+With Pre-Training:
+
+
+epochs | test loss | train loss | test acc | train acc
+---|---|---|---|---
+1.0 | 1.5359452962875366 | 1.5310659408569336 | 0.9349439775910364 | 0.9391053391053391
+2.0 | 1.514952540397644 | 1.5070991516113281 | 0.9525210084033613 | 0.9602813852813853
+3.0 | 1.5090779066085815 | 1.4990419149398804 | 0.9563025210084034 | 0.9665584415584415
+4.0 | 1.5039907693862915 | 1.4926044940948486 | 0.9602941176470589 | 0.9722943722943723
+5.0 | 1.4975998401641846 | 1.4844372272491455 | 0.9669467787114846 | 0.9796536796536797
+
+
 ### Images - Restricted Boltzmann Machine:
 
 ![Image-0](./images_RBM/0.jpg)
@@ -27,4 +53,3 @@ The above project allows one to train an RBM and a DBN in PyTorch on both CPU an
 ![Image-7](./images_RBM/7.jpg)
 ![Image-8](./images_RBM/8.jpg)
 ![Image-9](./images_RBM/9.jpg)
-

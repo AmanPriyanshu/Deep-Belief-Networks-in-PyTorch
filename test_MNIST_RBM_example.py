@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 from RBM import RBM
-from MNIST_RBM_example import MNIST
+from load_dataset import MNIST
 import cv2
 from PIL import Image
 from matplotlib import pyplot as plt
