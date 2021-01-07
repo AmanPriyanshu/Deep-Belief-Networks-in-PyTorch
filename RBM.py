@@ -126,6 +126,10 @@ class RBM:
 		self.vb = loaded['vb']
 		self.hb = loaded['hb']
 
+		self.W = self.W.to(self.device)
+		self.vb = self.vb.to(self.device)
+		self.hb = self.hb.to(self.device)
+
 def trial_dataset():
 	dataset = []
 	for _ in range(1000):
