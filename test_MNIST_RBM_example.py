@@ -29,10 +29,10 @@ if __name__ == '__main__':
 		hidden_image = np.mean(hidden_image, axis=0)
 		gen_image = np.array(gen_image)
 		gen_image = np.mean(gen_image, axis=0)
-
 		image = x.numpy()
+
 		image = mnist.inv_transform_normalizer(image)[0]
-		hidden_image = mnist.inv_transform_normalizer(hidden_image)[0]
+		hidden_image = (hidden_image*255)[0]
 		gen_image = mnist.inv_transform_normalizer(gen_image)[0]
 
 		image = np.reshape(image, (28, 28))
