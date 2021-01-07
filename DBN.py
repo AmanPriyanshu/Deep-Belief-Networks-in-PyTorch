@@ -14,5 +14,11 @@ class DBN:
 			dev = "cpu"  
 		self.device = torch.device(dev)
 
+	def generate_input_for_layer(self):
+		pass
+
 	def train_hidden(self):
 		pass
+
+if __name__ == '__main__':
+	layers = [512, 256, 64, 32, 10]
