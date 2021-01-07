@@ -45,6 +45,6 @@ if __name__ == '__main__':
 
 		print(image.shape, hidden_image.shape, gen_image.shape)
 
-		cv2.imwrite('./images/'+str(n)+'_original_image.jpg', image)
-		cv2.imwrite('./images/'+str(n)+'_hidden_image.jpg', hidden_image)
-		cv2.imwrite('./images/'+str(n)+'_reconstructed_image.jpg', gen_image)
+		cv2.imwrite('./images_RBM/'+str(n)+'_original_image.jpg', image)
+		cv2.imwrite('./images_RBM/'+str(n)+'_hidden_image.jpg', hidden_image)
+		cv2.imwrite('./images_RBM/'+str(n)+'_reconstructed_image.jpg', gen_image)
