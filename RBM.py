@@ -5,7 +5,7 @@ from tqdm import trange
 
 class RBM:
 
-	def __init__(self, n_visible, n_hidden, lr=0.001, epochs=5, mode='bernoulli', batch_size=32, k=3, optimizer='adam', gpu=False, savefile=None):
+	def __init__(self, n_visible, n_hidden, lr=0.001, epochs=5, mode='bernoulli', batch_size=32, k=3, optimizer='adam', gpu=False, savefile=None, early_stopping_patience=5):
 		self.mode = mode # bernoulli or gaussian RBM
 		self.n_hidden = n_hidden #  Number of hidden nodes
 		self.n_visible = n_visible # Number of visible nodes
@@ -22,6 +22,10 @@ class RBM:
 		self.m_batches = {0:[], 1:[], 2:[]}
 		self.v_batches = {0:[], 1:[], 2:[]}
 		self.savefile = savefile
+		self.early_stopping_patience = early_stopping_patience
+		self.stagnation = 0
+		self.previous_loss_before_stagnation = 0
+		self.progress = []
 
 		if torch.cuda.is_available() and gpu==True:  
 			dev = "cuda:0" 
@@ -97,9 +101,21 @@ class RBM:
 				self.update(v0, vk, ph0, phk, epoch+1)
 				train_loss += torch.mean(torch.abs(v0-vk))
 				counter += 1
+			
+			self.progress.append(train_loss.item()/counter)
 			details = {'epoch': epoch+1, 'loss': round(train_loss.item()/counter, 4)}
 			learning.set_description(str(details))
 			learning.refresh()
+			
+			if train_loss.item()/counter > self.previous_loss_before_stagnation and epoch>self.early_stopping_patience+1:
+				self.stagnation += 1
+				if self.stagnation == self.early_stopping_patience-1:
+					print("Not Improving the stopping training loop.")
+					break
+			else:
+				self.previous_loss_before_stagnation = train_loss.item()/counter
+				self.stagnation = 0
+			
 		if self.savefile is not None:
 			model = {'W':self.W, 'vb':self.vb, 'hb':self.hb}
 			torch.save(model, self.savefile)
@@ -139,7 +155,7 @@ if __name__ == '__main__':
 	
 	dataset = trial_dataset()
 
-	rbm = RBM(10, 100, epochs=50, mode='bernoulli', lr=0.001, optimizer='adam', gpu=True, savefile='save_example.pt')
+	rbm = RBM(10, 100, epochs=50, mode='bernoulli', lr=0.001, optimizer='adam', gpu=True, savefile='save_example.pt', early_stopping_patience=50)
 	print("Before Training:", rbm.vb)
 	rbm.train(dataset)
 	print("After Training:", rbm.vb)
