@@ -86,7 +86,7 @@ class DBN:
 		y_dash = torch.stack(y_gen)
 		y_dash = torch.mean(y_dash, dim=0)
 
-		return y_dash
+		return y_dash, x_dash
 
 	def initialize_model(self):
 		print("The Last layer will not be activated. The rest are activated using the Sigoid Function")
