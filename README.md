@@ -17,6 +17,9 @@ The above project allows one to train an RBM and a DBN in PyTorch on both CPU an
 
 ### Results - Restricted Boltzmann Machine:
 
+![RBM-Acc](./images/RBM_acc.jpg)
+![RBM-Loss](./images/RBM_loss.jpg)
+
 Without Pre-Training:
 
 
@@ -43,7 +46,21 @@ epochs | test loss | train loss | test acc | train acc
 
 ## DBN - Deep Belief Networks:
 
+In machine learning, a deep belief network (DBN) is a generative graphical model, or alternatively a class of deep neural network, composed of multiple layers of latent variables ("hidden units"), with connections between the layers but not between units within each layer.
+
+
+When trained on a set of examples without supervision, a DBN can learn to probabilistically reconstruct its inputs. The layers then act as feature detectors. After this learning step, a DBN can be further trained with supervision to perform classification.
+
+
+DBNs can be viewed as a composition of simple, unsupervised networks such as restricted Boltzmann machines (RBMs) or autoencoders, where each sub-network's hidden layer serves as the visible layer for the next. An RBM is an undirected, generative energy-based model with a "visible" input layer and a hidden layer and connections between but not within layers. This composition leads to a fast, layer-by-layer unsupervised training procedure, where contrastive divergence is applied to each sub-network in turn, starting from the "lowest" pair of layers (the lowest visible layer is a training set).
+
+
+The observation that DBNs can be trained greedily, one layer at a time, led to one of the first effective deep learning algorithms.Overall, there are many attractive implementations and uses of DBNs in real-life applications and scenarios (e.g., electroencephalography, drug discovery).
+
 ### Results - Deep Belief Networks:
+
+![DBN-Acc](./images/DBN_acc.jpg)
+![DBN-Loss](./images/DBN_loss.jpg)
 
 
 Without Pre-Training:
