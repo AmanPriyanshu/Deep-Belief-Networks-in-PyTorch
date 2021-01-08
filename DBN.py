@@ -5,12 +5,13 @@ from tqdm import trange
 from RBM import RBM
 
 class DBN:
-	def __init__(self, input_size, layers, mode='bernoulli', gpu=False, k=5):
+	def __init__(self, input_size, layers, mode='bernoulli', gpu=False, k=5, savefile=None):
 		self.layers = layers
 		self.input_size = input_size
 		self.layer_parameters = [{'W':None, 'hb':None, 'vb':None} for _ in range(len(layers))]
 		self.k = k
 		self.mode = mode
+		self.savefile = savefile
 
 	def sample_v(self, y, W, vb):
 		wy = torch.mm(y, W)
@@ -60,6 +61,8 @@ class DBN:
 			self.layer_parameters[index]['hb'] = rbm.hb.cpu()
 			self.layer_parameters[index]['vb'] = rbm.vb.cpu()
 			print("Finished Training Layer:", index, "to", index+1)
+		if self.savefile is not None:
+			torch.save(self.layer_parameters, self.savefile)
 
 	def reconstructor(self, x):
 		x_gen = []

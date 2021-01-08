@@ -74,13 +74,13 @@ if __name__ == '__main__':
 
 	layers = [512, 128, 64, 10]
 
-	dbn = DBN(train_x.shape[1], layers)
+	dbn = DBN(train_x.shape[1], layers, savefile='mnist_trained_dbn.pt')
 	dbn.train_DBN(train_x)
 
 	model = dbn.initialize_model()
 
 	completed_model = torch.nn.Sequential(model, torch.nn.Softmax(dim=1))
-	torch.save(completed_model, 'mnist_trained_dbn.pt')
+	torch.save(completed_model, 'mnist_trained_dbn_classifier.pt')
 
 	print(completed_model)
 
