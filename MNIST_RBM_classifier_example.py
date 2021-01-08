@@ -62,7 +62,6 @@ def train(model, x, y, train_x, train_y, test_x, test_y, epochs=5):
 		progress.append(test(model, train_x, train_y, test_x, test_y, epoch+1))
 		training.set_description(str({'epoch': epoch+1, 'loss': round(running_loss, 4), 'acc': round(acc, 4)}))
 
-	torch.save(model, 'classification_model.pt')
 	return model, progress
 
 if __name__ == '__main__':

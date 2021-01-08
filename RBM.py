@@ -110,12 +110,13 @@ class RBM:
 			if train_loss.item()/counter > self.previous_loss_before_stagnation and epoch>self.early_stopping_patience+1:
 				self.stagnation += 1
 				if self.stagnation == self.early_stopping_patience-1:
+					learning.close()
 					print("Not Improving the stopping training loop.")
 					break
 			else:
 				self.previous_loss_before_stagnation = train_loss.item()/counter
 				self.stagnation = 0
-			
+		learning.close()
 		if self.savefile is not None:
 			model = {'W':self.W, 'vb':self.vb, 'hb':self.hb}
 			torch.save(model, self.savefile)
@@ -129,6 +130,8 @@ class RBM:
 		self.W = self.W.to(self.device)
 		self.vb = self.vb.to(self.device)
 		self.hb = self.hb.to(self.device)
+
+
 
 def trial_dataset():
 	dataset = []
