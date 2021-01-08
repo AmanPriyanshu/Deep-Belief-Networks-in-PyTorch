@@ -111,3 +111,17 @@ epochs | test loss | train loss | test acc | train acc
 ![Image-7](./images_RBM/7.jpg)
 ![Image-8](./images_RBM/8.jpg)
 ![Image-9](./images_RBM/9.jpg)
+
+
+## Images - Deep Belief Networks:
+
+![Image-0](./images_DBN/0.jpg)
+![Image-1](./images_DBN/1.jpg)
+![Image-2](./images_DBN/2.jpg)
+![Image-3](./images_DBN/3.jpg)
+![Image-4](./images_DBN/4.jpg)
+![Image-5](./images_DBN/5.jpg)
+![Image-6](./images_DBN/6.jpg)
+![Image-7](./images_DBN/7.jpg)
+![Image-8](./images_DBN/8.jpg)
+![Image-9](./images_DBN/9.jpg)
