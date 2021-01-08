@@ -95,6 +95,8 @@ class DBN:
 		model = torch.nn.Sequential(*modules)
 
 		for layer_no, layer in enumerate(model):
+			if layer_no//2 == len(self.layer_parameters)-1:
+				break
 			if layer_no%2 == 0:
 				model[layer_no].weight = torch.nn.Parameter(self.layer_parameters[layer_no//2]['W'])
 				model[layer_no].bias = torch.nn.Parameter(self.layer_parameters[layer_no//2]['hb'])

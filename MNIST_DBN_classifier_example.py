@@ -97,3 +97,14 @@ if __name__ == '__main__':
 	progress = pd.DataFrame(np.array(progress))
 	progress.columns = ['epochs', 'test loss', 'train loss', 'test acc', 'train acc']
 	progress.to_csv('DBN_with_pretraining_classifier.csv', index=False)
+
+	print("With Pre-Training and Original Images turned Binary")
+
+	train_x = train_x > torch.mean(train_x)
+	test_x = test_x > torch.mean(test_x)
+	train_x, test_x = train_x.int().float(), test_x.int().float()
+
+	model, progress = train(completed_model, train_x, train_y, train_x, train_y, test_x, test_y)
+	progress = pd.DataFrame(np.array(progress))
+	progress.columns = ['epochs', 'test loss', 'train loss', 'test acc', 'train acc']
+	progress.to_csv('DBN_with_pretraining_and_input_binarization_classifier.csv', index=False)
