@@ -125,3 +125,34 @@ epochs | test loss | train loss | test acc | train acc
 ![Image-7](./images_DBN/7.jpg)
 ![Image-8](./images_DBN/8.jpg)
 ![Image-9](./images_DBN/9.jpg)
+
+## Execution (Latest: 23/07/2022)
+
+The code is tested with the version of torch: v1.11.0
+
+### RBM:
+With respect to `RBM.py`, load demo dataset through `dataset = trial_dataset()`.
+
+```py
+rbm = RBM(input_dim, hidden_dim, epochs=50, mode='bernoulli', lr=0.001, optimizer='adam', gpu=True, savefile='save_example.pt', early_stopping_patience=50)
+rbm.train(dataset)
+```
+
+The above code saves the trained model to: `save_example.pt`. To load the dataset use the following code:
+
+```py
+rbm.load_rbm('save_example.pt')
+print("After Loading:", rbm)
+```
+
+### DBN:
+
+With respect to `DBN.py`, load demo dataset through `dataset = trial_dataset()`.
+	
+```py
+layers = [7, 5, 2]
+dbn = DBN(10, layers)
+dbn.train_DBN(dataset)
+```
+
+The above code saves the trained model through the `savefile` argument. To load the dataset use the following code:
