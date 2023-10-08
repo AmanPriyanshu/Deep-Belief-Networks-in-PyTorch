@@ -126,7 +126,7 @@ epochs | test loss | train loss | test acc | train acc
 ![Image-8](./images_DBN/8.jpg)
 ![Image-9](./images_DBN/9.jpg)
 
-## Execution (Latest: 23/07/2022)
+## Execution (Latest: 08/10/2023)
 
 The code is tested with the version of torch: v1.11.0
 
