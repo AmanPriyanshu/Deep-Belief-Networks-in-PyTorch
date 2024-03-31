@@ -1,6 +1,8 @@
 # Deep-Belief-Networks-in-PyTorch
 The aim of this repository is to create RBMs, EBMs and DBNs in generalized manner, so as to allow modification and variation in model types.
 
+## This repository has been executed and verified on 8th October 2023
+
 ## RBM:
 
 Energy-Based Models are a set of deep learning models which utilize physics concept of energy. They determine dependencies between variables by associating a scalar value, which represents the energy to the complete system.
