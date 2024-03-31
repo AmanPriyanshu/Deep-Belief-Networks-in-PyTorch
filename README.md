@@ -155,4 +155,4 @@ dbn = DBN(10, layers)
 dbn.train_DBN(dataset)
 ```
 
-The above code saves the trained model through the `savefile` argument. To load the dataset use the following code:
+The above code saves the trained model through the `savefile` argument. 
