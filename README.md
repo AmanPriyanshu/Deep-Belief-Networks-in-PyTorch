@@ -1,7 +1,7 @@
 # Deep-Belief-Networks-in-PyTorch
 The aim of this repository is to create RBMs, EBMs and DBNs in generalized manner, so as to allow modification and variation in model types.
 
-### This repository has been executed and verified on 8th October 2023 details below!
+### This repository has been executed and verified on 8th October 2023 [details below!](https://github.com/AmanPriyanshu/Deep-Belief-Networks-in-PyTorch/blob/main/README.md#execution-latest-08102023)
 
 ## RBM:
 
